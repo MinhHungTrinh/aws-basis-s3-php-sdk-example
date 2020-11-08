@@ -40,7 +40,8 @@ try
     $s3->putObject([
         'Bucket' => $bucket,
         'Key'    => $key,
-        'Body'   => "Hello World!"
+        'Body'   => "Hello World!",
+//        'ACL'    => 'public-read'
     ]);
 }
 catch (Aws\S3\Exception\S3Exception $e) {

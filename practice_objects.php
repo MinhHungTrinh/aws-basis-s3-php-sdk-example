@@ -30,7 +30,8 @@ try
     $s3->putObject([
         'Bucket' => $bucket,
         'Key'    => $key,
-        'Body'   => "Hello World!"
+        'Body'   => "Hello World!",
+//        'ACL'    => 'public-read'
     ]);
 }
 catch (Aws\S3\Exception\S3Exception $e) {
@@ -57,37 +58,37 @@ catch (Aws\S3\Exception\S3Exception $e) {
     exit('Error: ' . $e->getAwsErrorMessage() . PHP_EOL);
 }
 
-///*
-// * Delete object
-// * */
-//
-//try
-//{
-//    echo 'Attempting to delete ' . $key . '...' . PHP_EOL;
-//
-//    $result = $s3->deleteObject([
-//        'Bucket' => $bucket,
-//        'Key'    => $key
-//    ]);
-//}
-//catch (Aws\S3\Exception\S3Exception $e) {
-//    exit('Error: ' . $e->getAwsErrorMessage() . PHP_EOL);
-//}
-//
-///*
-// * Checking Delete
-// * */
-//try
-//{
-//    echo 'Checking to see if ' . $key . ' still exists...' . PHP_EOL;
-//
-//    $result = $s3->getObject([
-//        'Bucket' => $bucket,
-//        'Key'    => $key
-//    ]);
-//
-//    echo 'Error: ' . $key . ' still exists.';
-//}
-//catch (Aws\S3\Exception\S3Exception $e) {
-//    exit($e->getAwsErrorMessage());
-//}
+/*
+ * Delete object
+ * */
+
+try
+{
+    echo 'Attempting to delete ' . $key . '...' . PHP_EOL;
+
+    $result = $s3->deleteObject([
+        'Bucket' => $bucket,
+        'Key'    => $key
+    ]);
+}
+catch (Aws\S3\Exception\S3Exception $e) {
+    exit('Error: ' . $e->getAwsErrorMessage() . PHP_EOL);
+}
+
+/*
+ * Checking Delete
+ * */
+try
+{
+    echo 'Checking to see if ' . $key . ' still exists...' . PHP_EOL;
+
+    $result = $s3->getObject([
+        'Bucket' => $bucket,
+        'Key'    => $key
+    ]);
+
+    echo 'Error: ' . $key . ' still exists.';
+}
+catch (Aws\S3\Exception\S3Exception $e) {
+    exit($e->getAwsErrorMessage());
+}
