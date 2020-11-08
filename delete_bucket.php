@@ -4,7 +4,7 @@
 require 'vendor/autoload.php';
 
 $region = 'region';
-$access_key = 'my-access-key';
+$access_key = 'my-access-key';  // Don't publish access_key and secret_key
 $secret_key = 'my-secret-key';
 $bucket = 'bucket-name';
 
